@@ -1,0 +1,12 @@
+
+spring:
+  profiles:
+    active: default
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 设置日志为控制台输出
+  # 配置逻辑删除
+  global-config:
+    db-config:
+      logic-delete-value: 1 # 删除的值为1
+      logic-not-delete-value: 0 # 不删除的值为0
