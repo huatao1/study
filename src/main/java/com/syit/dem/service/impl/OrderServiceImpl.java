@@ -26,8 +26,8 @@ public class OrderServiceImpl implements OrderService {
 
         QueryWrapper<Student> wrapper2 = new QueryWrapper<>();
         wrapper2.eq("id","1");
-        List<Student> studentLists= studentMapper.selectList(wrapper2);
-        System.out.println(studentLists.size());
+//        List<Student> studentLists= studentMapper.selectList(wrapper2);
+//        System.out.println(studentLists.size());
         return orderMapper.selectList(wrapper);
     }
 }

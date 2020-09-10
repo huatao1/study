@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -23,6 +24,7 @@ class DemApplicationTests {
 
     @Resource
     private StudentMapper   studentMapper;
+
 
     @Value("${demo.url}")
     private String url ;
@@ -74,7 +76,7 @@ class DemApplicationTests {
     @Test
     public void test(){
         Student s=Student.builder().id(1).age(21).build();
-        studentMapper.updateById(s);
+//        studentMapper.updateById(s);
     }
     @Test
     public void test1(){
@@ -131,5 +133,32 @@ class DemApplicationTests {
       s=Optional.ofNullable(s).orElseGet(()-> Student.builder().build());
       s.setName("222");
       System.out.println(s);
+    }
+    @Test
+    public void test7(){
+        List<Student>  lists=studentMapper.getStudents();
+        System.out.println(lists.size());
+
+        Student s= studentMapper.getStudent();
+        System.out.println(s);
+
+    }
+
+    @Test
+    public void test8(){
+        SimpleDateFormat format =new SimpleDateFormat("HH:mm");
+        try {
+            Date t1= format.parse("04:30");
+            Date t2= format.parse("03:30");
+            if(t1.before(t2)){
+                System.out.println(11111);
+            }
+            else{
+                System.out.println(222222);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
     }
 }
